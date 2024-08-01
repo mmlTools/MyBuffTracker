@@ -1,12 +1,24 @@
 local MyBuffTracker = {}
 
-MyBuffTracker.defaultBuffs = {
-    "Power Word: Fortitude",
-    "Arcane Intellect"
+local _, playerClass = UnitClass("player")
+
+local classBuffs = {
+    ["WARRIOR"] = { "Battle Shout", "Commanding Shout" },
+    ["PALADIN"] = { "Blessing of Kings", "Blessing of Might" },
+    ["HUNTER"] = { "Trueshot Aura" },
+    ["ROGUE"] = { "Tricks of the Trade" },
+    ["PRIEST"] = { "Power Word: Fortitude", "Shadow Protection" },
+    ["DEATHKNIGHT"] = { "Horn of Winter" },
+    ["SHAMAN"] = { "Earth Shield", "Water Shield", "Windfury Weapon", "Flametongue Weapon" },
+    ["MAGE"] = { "Arcane Intellect", "Focus Magic" },
+    ["WARLOCK"] = { "Dark Intent", "Fel Armor" },
+    ["DRUID"] = { "Mark of the Wild", "Thorns" },
 }
 
+MyBuffTracker.defaultBuffs = classBuffs[playerClass] or {}
+
 MyBuffTracker.profiles = MyBuffTracker.profiles or {}
-MyBuffTracker.currentProfile = "Default"
+MyBuffTracker.currentProfile = nil
 
 function MyBuffTracker:LoadSavedVariables()
     if not MyBuffTrackerDB then
