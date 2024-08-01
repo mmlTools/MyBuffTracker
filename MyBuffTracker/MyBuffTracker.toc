@@ -1,0 +1,11 @@
+## Interface: 40600
+## Title: My Buff Tracker
+## Notes: My Buff Tracker is an advanced addon designed for efficient buff tracking. It includes a robust profile management system that allows you to create and manage multiple buff configurations tailored to your class, specialization, and specific in-game activities such as raiding and dungeons.
+## Author: XBStyx
+## Version: 1.0
+## SavedVariables: MyBuffTrackerDB
+
+MyBuffTracker.lua
+Addon_Data/ui.lua
+Addon_Data/profile_manager.lua
+Addon_Data/buff_manager.lua
