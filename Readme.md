@@ -32,7 +32,7 @@ The addon’s visual elements, including icon size, panel position, and layout, 
 
 For any questions or support requests, please reach out to the addon author:
 
-- **Author**: XBStyx
+- **Author**: MMLTech(BrokenPointe)
 - **Contact**: contact@mmltools.com
 
 ## Changelog
