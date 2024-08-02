@@ -41,8 +41,67 @@ local function CreateProfileManagerButton()
     return button
 end
 
-MyBuffTracker.CreateDropdown = CreateDropdown
-MyBuffTracker.CreateProfileManagerButton = CreateProfileManagerButton
+local minimapButton = CreateFrame("Button", "MyBuffTrackerMinimapButton", Minimap)
+minimapButton:SetSize(32, 32)
+minimapButton:SetFrameStrata("MEDIUM")
+minimapButton:SetFrameLevel(8)
+
+minimapButton:SetNormalTexture("Interface\\AddOns\\MyBuffTracker\\Textures\\MinimapButton")
+minimapButton:SetHighlightTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight", "ADD")
+minimapButton:SetPushedTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight")
+
+minimapButton:SetPoint("TOPLEFT", Minimap, "TOPLEFT")
+
+minimapButton:SetScript("OnClick", function()
+    if MyBuffTrackerFrame:IsShown() then
+        MyBuffTrackerFrame:Hide()
+    else
+        MyBuffTrackerFrame:Show()
+    end
+end)
+
+minimapButton:SetScript("OnEnter", function(self)
+    GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+    GameTooltip:SetText("My Buff Tracker", 1, 1, 1)
+    GameTooltip:AddLine("Click to toggle the addon.", nil, nil, nil, true)
+    GameTooltip:Show()
+end)
+
+minimapButton:SetScript("OnLeave", function(self)
+    GameTooltip:Hide()
+end)
+
+minimapButton:RegisterForDrag("LeftButton")
+minimapButton:SetScript("OnDragStart", function(self)
+    self:StartMoving()
+end)
+
+minimapButton:SetScript("OnDragStop", function(self)
+    self:StopMovingOrSizing()
+end)
+
+function MyBuffTracker:Toggle()
+    if MyBuffTrackerFrame:IsShown() then
+        MyBuffTrackerFrame:Hide()
+    else
+        MyBuffTrackerFrame:Show()
+    end
+end
+
+MyBuffTrackerFrame = CreateFrame("Frame", "MyBuffTrackerFrame", UIParent)
+MyBuffTrackerFrame:SetSize(400, 300)
+MyBuffTrackerFrame:SetPoint("CENTER")
+MyBuffTrackerFrame:Hide()
 
 local dropdown = MyBuffTracker:CreateDropdown()
 local profileManagerButton = MyBuffTracker:CreateProfileManagerButton()
+
+MyBuffTrackerFrame:SetScript("OnShow", function()
+    dropdown:Show()
+    profileManagerButton:Show()
+end)
+
+MyBuffTrackerFrame:SetScript("OnHide", function()
+    dropdown:Hide()
+    profileManagerButton:Hide()
+end)

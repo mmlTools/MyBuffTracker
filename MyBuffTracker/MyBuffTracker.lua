@@ -3,16 +3,16 @@ local MyBuffTracker = {}
 local _, playerClass = UnitClass("player")
 
 local classBuffs = {
-    ["WARRIOR"] = { "Battle Shout", "Commanding Shout" },
-    ["PALADIN"] = { "Blessing of Kings", "Blessing of Might" },
-    ["HUNTER"] = { "Trueshot Aura" },
-    ["ROGUE"] = { "Tricks of the Trade" },
-    ["PRIEST"] = { "Power Word: Fortitude", "Shadow Protection" },
+    ["WARRIOR"]     = { "Battle Shout", "Commanding Shout" },
+    ["PALADIN"]     = { "Blessing of Kings", "Blessing of Might" },
+    ["HUNTER"]      = { "Trueshot Aura" },
+    ["ROGUE"]       = { "Tricks of the Trade" },
+    ["PRIEST"]      = { "Power Word: Fortitude", "Shadow Protection" },
     ["DEATHKNIGHT"] = { "Horn of Winter" },
-    ["SHAMAN"] = { "Earth Shield", "Water Shield", "Windfury Weapon", "Flametongue Weapon" },
-    ["MAGE"] = { "Arcane Intellect", "Focus Magic" },
-    ["WARLOCK"] = { "Dark Intent", "Fel Armor" },
-    ["DRUID"] = { "Mark of the Wild", "Thorns" },
+    ["SHAMAN"]      = { "Earth Shield", "Water Shield", "Windfury Weapon", "Flametongue Weapon" },
+    ["MAGE"]        = { "Arcane Intellect", "Focus Magic" },
+    ["WARLOCK"]     = { "Dark Intent", "Fel Armor" },
+    ["DRUID"]       = { "Mark of the Wild", "Thorns" },
 }
 
 MyBuffTracker.defaultBuffs = classBuffs[playerClass] or {}
